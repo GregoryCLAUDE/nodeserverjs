@@ -7,21 +7,21 @@ var user ={
 	mdp: "azerty@1234"
 };
 
-app.use(express.static('nodeserver'));
-//app.use('/static', express.static(__dirname + '/nodeserver'));
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodypaser.json());
 
 
-app.get('/auth', function(req, res){
 
-	res.send(index.html);
-});
+app.post('/auth', function(req, res){
+	var data = req.body;
+	//verifier avec un if
+
+ });
+
+app.use(express.static('public'));
 
 app.listen(3000, function(){
 	console.log("yipikay!")
 });
 
-app.post('/auth', function(req, res){
-
-	res.send('logged');
-
-});
