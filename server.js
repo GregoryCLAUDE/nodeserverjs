@@ -9,13 +9,18 @@ var user ={
 
 
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodypaser.json());
+app.use(bodyParser.json());
 
 
 
 app.post('/auth', function(req, res){
 	var data = req.body;
-	//verifier avec un if
+	
+	if(data.login == user.login && data.mdp == user.mdp) {
+		res.send("Success!")
+	}else {
+		res.send("Error!")
+	}
 
  });
 
