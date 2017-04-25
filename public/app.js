@@ -2,7 +2,7 @@
 $('#envoyer').click(function(){
 	var login=$('#login').val();
 	var mdp=$('#mdp').val();
-	console.log('click');
+	//console.log('click');
 
 	 $.ajax({
 	 	type:"POST",
@@ -12,15 +12,19 @@ $('#envoyer').click(function(){
 	 		mdp:mdp,
 	 	},
 	 		success:function(data){
-	 			alert("logged")
+	 			//alert("logged")
 	 		}
 	 })
 	 	.done(function(data){
-	 		alert("votre ordinateur s'autodétruira dans 5 sec")	
-		})
-		.fail(function(data) {
-			alert("Erreur d'identification!");
-		});
+	 		console.log(data)
+	 		if (data == "Success!"){
+	 			$("#statut").append(data);
+	 		} else{
+	 			$("#erreur").append(data);
+		}})
+		// .fail(function(data) {
+		// 	alert("Erreur d'identification!");
+		// });
 });
 
 

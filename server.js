@@ -1,6 +1,7 @@
 var express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
+var bcrypt = require('bcryptjs');
 var user ={
 
 	login: "emiflogre",
@@ -16,10 +17,12 @@ app.use(bodyParser.json());
 app.post('/auth', function(req, res){
 	var data = req.body;
 	
-	if(data.login == user.login && data.mdp == user.mdp) {
-		res.send("Success!")
+	if(data.login === user.login && data.mdp === user.mdp) {
+		//res.send("identification réussie!")
+		window.location.href="myaccount.html";
+		//res.redirect('/myaccount.html');
 	}else {
-		res.send("Error!")
+		res.send("Erreur d'identification!")
 	}
 
  });
